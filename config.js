@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 module.exports = {
-  awsAccesskeyID: "AKIA47CR27VCUT3EHKMC",
-  awsSecretAccessKey: "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",
-  awsRegion: "ap-southeast-1"
-  };
+  awsAccesskeyID: process.env.AWS_ACCESS_KEY_ID,
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  awsRegion: process.env.AWS_REGION
+};

@@ -1,5 +1,6 @@
 const aws = require("aws-sdk");
 const config = require("./config");
+const textractProcessData = require("./textractProcessData");
 
 aws.config.update({
   accessKeyId: config.awsAccesskeyID,
@@ -16,15 +17,14 @@ const getText = (block) => {
       text += item.Text+' ';
     }
   })
-
-  return text;
+  return textractProcessData(text);
 }
 
-module.exports = async buffer => {
+module.exports = async block => {
   const params = {
     Document: {
       /* required */
-      Bytes: buffer
+      Bytes: block
     },
     FeatureTypes: ['FORMS', 'TABLES']
   };

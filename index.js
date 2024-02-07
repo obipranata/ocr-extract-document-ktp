@@ -21,7 +21,7 @@ const textractScan = require("./textract");
 app.post('/upload', upload.single('file'), async (req, res) => {
   const data = fs.readFileSync('./uploads/'+req.file.filename);
   const results = await textractScan(data);
-  res.send({'data' : results});
+  res.send({'data': results});
 });
 
 app.listen(port, () => {
